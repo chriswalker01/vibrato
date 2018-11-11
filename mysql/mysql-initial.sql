@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS vibrato;
-CREATE USER 'vibrato-test' IDENTIFIED BY 'MySuperSecureUserPassword';
-GRANT ALL ON *.* TO 'vibrato-test';
+CREATE USER 'vibratotest' IDENTIFIED BY 'MySuperSecureUserPassword';
+GRANT ALL ON *.* TO 'vibratotest';
 flush privileges;
 use vibrato;
 CREATE TABLE mystrings (
