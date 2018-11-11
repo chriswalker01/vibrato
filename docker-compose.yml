@@ -1,0 +1,18 @@
+version: '2'
+services:
+  mysql:
+    container_name: vibrato_mysql
+    restart: always
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'MySuperSecurePassword'
+      MYSQL_USER: 'vibrato-test'
+      MYSQL_PASS: 'MySuperSecureUserPassword'
+    volumes:
+      - mysqlvarlib:/var/lib/mysql
+      - .:/data
+    command: --init-file /data/mysql/mysql-initial.sql
+volumes:
+  mysqlvarlib:
