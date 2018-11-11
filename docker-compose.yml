@@ -8,8 +8,6 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 'MySuperSecurePassword'
-      MYSQL_USER: 'vibrato-test'
-      MYSQL_PASS: 'MySuperSecureUserPassword'
     volumes:
       - mysqlvarlib:/var/lib/mysql
       - .:/data
