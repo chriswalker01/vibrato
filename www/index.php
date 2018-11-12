@@ -5,6 +5,7 @@ Add something to the database by typing it into the box below.<br>
 <form method="post">
 New String: <input name="newstring" type="text" />
 <input type="submit" value="Add" />
+<input type="submit" value="Delete All" name="delete" />
 </form>
 
 <?php
@@ -28,6 +29,13 @@ $sql = "SELECT * FROM mystrings";
 $result = $mysqli->query($sql);
 while ($line = $result->fetch_assoc()) {
     echo $line["string"]. "<br>";
+}
+
+if (isset($_POST['delete'])) {
+    $sql = "DELETE FROM mystrings";
+    if ($result = $mysqli->query($sql)) {
+        header("Refresh:0");
+    }
 }
 
 $mysqli->close();
