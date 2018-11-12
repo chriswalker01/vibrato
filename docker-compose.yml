@@ -12,5 +12,17 @@ services:
       - mysqlvarlib:/var/lib/mysql
       - .:/data
     command: --init-file /data/mysql/mysql-initial.sql
+    networks:
+      vpcbr:
+        ipv4_address: 10.1.1.200
+
 volumes:
   mysqlvarlib:
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.1.1.0/24
+         gateway: 10.1.1.1
