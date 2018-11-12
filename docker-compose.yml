@@ -19,10 +19,13 @@ services:
   web:
     container_name: vibrato_web
     restart: always
-    build: .
+    build: web/
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      vpcbr:
+        ipv4_address: 10.1.1.201
 
 volumes:
   mysqlvarlib:
