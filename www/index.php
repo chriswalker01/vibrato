@@ -11,7 +11,7 @@ New String: <input name="newstring" type="text" />
 <?php
 
 // DB variables
-$servername = "docker.walker.home";
+$servername = "10.1.1.200";
 $database = "vibrato";
 $username = "vibratotest";
 $password = "MySuperSecureUserPassword";
