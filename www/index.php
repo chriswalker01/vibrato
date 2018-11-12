@@ -34,7 +34,21 @@ if (!empty($newstring)) {
     }
 }
 
-$sql = "SELECT * FROM mystrings";
+$sql = "SELECT string FROM mystrings";
+if (!$result = $mysqli->query($sql)) {
+    echo "Sorry, the website is experiencing problems.";
+    exit;
+}
+
+$sql = "SELECT string FROM mystrings";
+if ($result->num_rows === 0) {
+    echo "There aren't any strings in the database yet. Add one above.";
+    exit;
+} else {
+
+    echo "The following is in the database: <br>";
+}
+
 $result = $mysqli->query($sql);
 while ($line = $result->fetch_assoc()) {
     echo $line["string"]. "<br>";
@@ -43,12 +57,13 @@ while ($line = $result->fetch_assoc()) {
 if (isset($_POST['delete'])) {
     $sql = "DELETE FROM mystrings";
     if ($result = $mysqli->query($sql)) {
-        header("Refresh:0");
+        $page = $_SERVER['PHP_SELF'];
+        echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
     }
 }
 
 $mysqli->close();
-$result->free();
 
 ?>
+
 </body></html>
