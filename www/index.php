@@ -1,3 +1,12 @@
+<html><body>
+<h4>String Play</h4>
+Add something to the database by typing it into the box below.<br>
+<br>
+<form method="post">
+New String: <input name="newstring" type="text" />
+<input type="submit" value="Add" name="add" />
+</form>
+
 <?php
 
 $servername = "docker.walker.home";
@@ -7,7 +16,7 @@ $password = "MySuperSecureUserPassword";
 
 $mysqli = new mysqli('docker.walker.home', 'vibratotest', 'MySuperSecureUserPassword', 'vibrato');
 
-$newstring = "alice";
+$newstring = $_POST['newstring'];
 $sql = "INSERT INTO mystrings (string) VALUES ('$newstring')";
 if (!$mysqli->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -22,3 +31,4 @@ while ($line = $result->fetch_assoc()) {
 $mysqli->close();
 
 ?>
+</body></html>
