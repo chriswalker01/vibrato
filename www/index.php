@@ -5,12 +5,19 @@ $database = "vibrato";
 $username = "vibratotest";
 $password = "MySuperSecureUserPassword";
 
-$mysqli = new mysqli("$servername", "$username", "$password", "$database");
+$mysqli = new mysqli('docker.walker.home', 'vibratotest', 'MySuperSecureUserPassword', 'vibrato');
+
+$newstring = "alice";
+$sql = "INSERT INTO mystrings (string) VALUES ('$newstring')";
+if (!$mysqli->query($sql) === TRUE) {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
 $sql = "SELECT * FROM mystrings";
 $result = $mysqli->query($sql);
-$line = $result->fetch_assoc();
-echo $line['string'];
+while ($line = $result->fetch_assoc()) {
+    echo $line["string"]. "<br>";
+}
 
 $mysqli->close();
 
